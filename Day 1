@@ -1,9 +1,8 @@
+# Array
 
+## Easy
 
-# Array:
-
-## Easy:
-
+### Two Sum
 https://leetcode.com/problems/two-sum/description/
 
 ```cpp
@@ -26,6 +25,9 @@ public:
 };
 ```
 
+---
+
+### Best Time to Buy and Sell Stock
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/
 
 ```cpp
@@ -55,8 +57,11 @@ public:
 };
 ```
 
-## Medium:
+---
 
+## Medium
+
+### Merge Intervals
 https://leetcode.com/problems/merge-intervals/description/
 
 ```cpp
@@ -83,6 +88,9 @@ public:
 };
 ```
 
+---
+
+### Insert Delete GetRandom O(1)
 https://leetcode.com/problems/3sum/description/
 
 ```cpp
@@ -139,9 +147,14 @@ public:
  */
 ```
 
-## Hard:
+---
 
+## Hard
+
+### First Missing Positive
 https://leetcode.com/problems/first-missing-positive/description/
+
+```cpp
 class Solution {
 public:
     int firstMissingPositive(vector<int>& nums) {
@@ -159,3 +172,4 @@ public:
         return res; 
     }
 };
+```
