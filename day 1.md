@@ -90,61 +90,43 @@ public:
 
 ---
 
-### Insert Delete GetRandom O(1)
+### #SUM
 https://leetcode.com/problems/3sum/description/
-
-```cpp
-class RandomizedSet {
+```c++
+class Solution {
 public:
-    vector<int> res ;
-    unordered_map<int,int> mp;
-    RandomizedSet() {         
-    }
-    
-    bool insert(int val) {
-        if(mp.find(val) != mp.end() ){
-            return false;
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        vector<vector<int>> ans;
+        sort(nums.begin(), nums.end());
+        for (int i = 0; i < nums.size(); i++) {
+
+            if (i > 0 && nums[i] == nums[i - 1])
+                continue;
+            int l = i + 1;
+            int r = nums.size() - 1;
+
+            while (l < r) {
+
+                int sum = nums[i] + nums[l] + nums[r];
+                if (sum == 0) {
+                    ans.push_back({nums[i], nums[l], nums[r]});
+
+                    while (l < r && nums[l] == nums[l + 1])
+                        l++;
+                    while (l < r && nums[r] == nums[r + 1])
+                        r--;
+                    l++;
+                    r--;
+                } else if (sum < 0) {
+                    l++;
+                } else {
+                    r--;
+                }
+            }
         }
-        res.push_back(val);
-        int idx = res.size()-1;
-        mp[val] = idx;
-        return true;
-        
-    }
-    
-    bool remove(int val) {
-        if(mp.find(val) !=  mp.end()){
-            int last = res.back();
-            int idx = mp[val];
-
-            res[idx]= last;
-            mp[last] = idx;
-
-            res.pop_back();
-            mp.erase(val);
-            return true;
-
-        }else{
-            return false;
-        }
-
-        
-    }
-    
-    int getRandom() {
-
-        return res[rand() % res.size() ];
-        
+        return ans;
     }
 };
-
-/**
- * Your RandomizedSet object will be instantiated and called as such:
- * RandomizedSet* obj = new RandomizedSet();
- * bool param_1 = obj->insert(val);
- * bool param_2 = obj->remove(val);
- * int param_3 = obj->getRandom();
- */
 ```
 
 ---
